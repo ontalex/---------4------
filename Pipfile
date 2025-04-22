@@ -11,6 +11,7 @@ pandas = "*"
 datetime = "*"
 pytz = "*"
 openpyxl = "*"
+tqdm = "*"
 
 [dev-packages]
 

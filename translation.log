@@ -1,0 +1,71 @@
+2025-04-22 09:52:55,145 - ERROR - Ошибка обработки стран: Missing optional dependency 'fsspec'.  Use pip or conda to install fsspec.
+2025-04-22 09:52:55,145 - ERROR - Критическая ошибка: Missing optional dependency 'fsspec'.  Use pip or conda to install fsspec.
+Traceback (most recent call last):
+  File "C:\Users\AlexB\.virtualenvs\Практика-4-весна-yEHhSuH_\Lib\site-packages\pandas\compat\_optional.py", line 135, in import_optional_dependency
+    module = importlib.import_module(name)
+             ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Program Files\WindowsApps\PythonSoftwareFoundation.Python.3.11_3.11.2544.0_x64__qbz5n2kfra8p0\Lib\importlib\__init__.py", line 126, in import_module
+    return _bootstrap._gcd_import(name[level:], package, level)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "<frozen importlib._bootstrap>", line 1204, in _gcd_import
+  File "<frozen importlib._bootstrap>", line 1176, in _find_and_load
+  File "<frozen importlib._bootstrap>", line 1140, in _find_and_load_unlocked
+ModuleNotFoundError: No module named 'fsspec'
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "Z:\Практика-4-весна\cli_2.py", line 259, in run
+    self.process_countries()
+  File "Z:\Практика-4-весна\cli_2.py", line 114, in process_countries
+    df = pd.read_excel(
+         ^^^^^^^^^^^^^^
+  File "C:\Users\AlexB\.virtualenvs\Практика-4-весна-yEHhSuH_\Lib\site-packages\pandas\io\excel\_base.py", line 495, in read_excel
+    io = ExcelFile(
+         ^^^^^^^^^^
+  File "C:\Users\AlexB\.virtualenvs\Практика-4-весна-yEHhSuH_\Lib\site-packages\pandas\io\excel\_base.py", line 1550, in __init__
+    ext = inspect_excel_format(
+          ^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\AlexB\.virtualenvs\Практика-4-весна-yEHhSuH_\Lib\site-packages\pandas\io\excel\_base.py", line 1402, in inspect_excel_format
+    with get_handle(
+         ^^^^^^^^^^^
+  File "C:\Users\AlexB\.virtualenvs\Практика-4-весна-yEHhSuH_\Lib\site-packages\pandas\io\common.py", line 728, in get_handle
+    ioargs = _get_filepath_or_buffer(
+             ^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\AlexB\.virtualenvs\Практика-4-весна-yEHhSuH_\Lib\site-packages\pandas\io\common.py", line 409, in _get_filepath_or_buffer
+    fsspec = import_optional_dependency("fsspec")
+             ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\AlexB\.virtualenvs\Практика-4-весна-yEHhSuH_\Lib\site-packages\pandas\compat\_optional.py", line 138, in import_optional_dependency
+    raise ImportError(msg)
+ImportError: Missing optional dependency 'fsspec'.  Use pip or conda to install fsspec.
+2025-04-22 09:58:29,507 - INFO - ==================================================
+2025-04-22 09:58:30,547 - INFO - Обработка городов с 0 по 100 (всего: 100)
+2025-04-22 09:58:52,627 - ERROR - Ошибка при выполнении запроса: INSERT OR IGNORE INTO city (name, trans_name) VALUES (?, ?)
+Incorrect number of bindings supplied. The current statement uses 2, and there are 50 supplied.
+2025-04-22 09:58:52,627 - ERROR - Ошибка обработки пакета: Incorrect number of bindings supplied. The current statement uses 2, and there are 50 supplied.
+2025-04-22 09:58:52,627 - ERROR - Ошибка в потоке: Incorrect number of bindings supplied. The current statement uses 2, and there are 50 supplied.
+2025-04-22 09:58:54,807 - ERROR - Ошибка при выполнении запроса: INSERT OR IGNORE INTO city (name, trans_name) VALUES (?, ?)
+Incorrect number of bindings supplied. The current statement uses 2, and there are 50 supplied.
+2025-04-22 09:58:54,807 - ERROR - Ошибка обработки пакета: Incorrect number of bindings supplied. The current statement uses 2, and there are 50 supplied.
+2025-04-22 09:58:54,807 - ERROR - Ошибка обработки городов: Incorrect number of bindings supplied. The current statement uses 2, and there are 50 supplied.
+2025-04-22 09:58:54,807 - ERROR - Критическая ошибка: Incorrect number of bindings supplied. The current statement uses 2, and there are 50 supplied.
+Traceback (most recent call last):
+  File "Z:\Практика-4-весна\cli_2.py", line 261, in run
+    self.process_cities()
+  File "Z:\Практика-4-весна\cli_2.py", line 242, in process_cities
+    future.result()
+  File "C:\Program Files\WindowsApps\PythonSoftwareFoundation.Python.3.11_3.11.2544.0_x64__qbz5n2kfra8p0\Lib\concurrent\futures\_base.py", line 449, in result
+    return self.__get_result()
+           ^^^^^^^^^^^^^^^^^^^
+  File "C:\Program Files\WindowsApps\PythonSoftwareFoundation.Python.3.11_3.11.2544.0_x64__qbz5n2kfra8p0\Lib\concurrent\futures\_base.py", line 401, in __get_result
+    raise self._exception
+  File "C:\Program Files\WindowsApps\PythonSoftwareFoundation.Python.3.11_3.11.2544.0_x64__qbz5n2kfra8p0\Lib\concurrent\futures\thread.py", line 58, in run
+    result = self.fn(*self.args, **self.kwargs)
+             ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "Z:\Практика-4-весна\cli_2.py", line 181, in process_chunk
+    self.safe_db_execute(
+  File "Z:\Практика-4-весна\cli_2.py", line 104, in safe_db_execute
+    return cursor.execute(query, params)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+sqlite3.ProgrammingError: Incorrect number of bindings supplied. The current statement uses 2, and there are 50 supplied.
+2025-04-22 09:58:54,807 - ERROR - Последняя ошибка БД: Ошибка БД: Incorrect number of bindings supplied. The current statement uses 2, and there are 50 supplied. | Запрос: INSERT OR IGNORE INTO city (name, trans_name) VALUES (?, ?)
