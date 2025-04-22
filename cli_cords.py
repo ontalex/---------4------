@@ -1,5 +1,5 @@
 import sqlite3
-import geopy
+import time
 import pytz
 from tqdm import tqdm
 from datetime import datetime
@@ -38,7 +38,9 @@ def get_utc_offset(lat: float, lng: float) -> float:
 
 conn = sqlite3.connect("./db/index.db")
 cursor = conn.cursor()
-db_data = cursor.execute("select data.id, data.lat, data.lng from data;").fetchall()
+db_data = cursor.execute(
+    "select data.id, data.lat, data.lng from data where data.timezone is NULL;"
+).fetchall()
 db_data_len = len(db_data)
 print("Len:", db_data_len)
 # print("Data:", db_data[1])
@@ -56,5 +58,12 @@ for i in tqdm(range(db_data_len)):
         (float(offset), int(db_data[i][0])),
     ).fetchall()
 
+    if (i % 100) == 0:
+        conn.commit()
+        print("Приостановка на 1 секунду")
+        time.sleep(1)
+
 conn.commit()
 conn.close()
+
+exit()
